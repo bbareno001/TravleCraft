@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>TRAVEL CRAFT</title>
+	<style type="text/css">
+body {
+	font-family: Times New Roman, sans-serif;
+	color: #0B3861;
+	text-align: center;
+	background-image:
+		url('https://www.bhmpics.com/downloads/travel-themed-wallpaper-Wallpapers/21.hand-drawn-travel-background_52683-85109.jpg');
+	background-color: #E0F2F7;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.button {
+	background-color: #CEF6E3;
+            color: #0A2A0A;
+            cursor: pointer;
+            font-size: 20px;
+             width: 98%; 
+  }
+  
+#formulario input[type="text"], #formulario input[type="password"],
+	#formulario input[type="submit"] {
+	width: 50%;
+	padding: 20px;
+	margin-top: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	border-color: #0A2A0A;
+	box-sizing: border-box;
+}
+
+
+
+#formulario input[type="submit"] {
+	background-color: #CEF6E3;
+	color: black;
+	cursor: pointer;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	margin-top: 30px;
+}
+
+#logo {
+	position: absolute;
+	top: 10px;
+	right: 50px;
+	width: 100px;
+	height: auto;
+}
+
+#idioma {
+	position: absolute;
+	bottom: 10px;
+	right: 50px;
+	width: 100px;
+	height: auto;
+}
+</style>
+</h:head>
+
+
+<body>
+	<img id="logo"
+		src="https://cdn-icons-png.flaticon.com/512/2060/2060284.png"
+		alt="Logo" />
+	<h1 style="font-size: 45px; color: #0A2A0A;">TRAVEL CRAFT</h1>
+	<h2 style="font-size: 30px; color: #0A2A0A;">Su viaje a un solo
+		click</h2>
+	<br />
+	<br />
+	<h3 style="font-size: 25px; color: #0A2A0A;">RESGÍSTRESE</h3>
+	<button onclick="window.location.href='Menu.xhtml';" >YA TENGO CUENTA</button>
+	<h:form id="formulario">
+		<br />
+		
+				
+			
+				<br />
+				<br />
+				USUARIO:
+				<br ></br>
+				<h:inputText id="usuario" value="#{userBean.nombre}"  />
+				<br />
+				CONTRASEÑA:
+				<br ></br>
+				<h:inputSecret id="contrasena" value="#{userBean.contra}" />
+				<br />
+				
+				<h:commandButton action="#{userBean.nuevoUsuario()}"
+					value="Crear Usuario" />
+			
+	</h:form>
+
+</body>
+
+</html>

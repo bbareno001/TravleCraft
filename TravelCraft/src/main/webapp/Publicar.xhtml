@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+      
+<h:head>
+
+<title>Añadir Itinerario</title>
+
+<style>
+
+  body {
+    
+    font-family: Times New Roman, sans-serif;
+	text-color: #0B3861;
+	text-align: center;
+	background-image:
+		url('https://p1.pxfuel.com/preview/619/758/367/sky-clouds-blue-white-background-air.jpg');
+	background-color: #E0F2F7;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+  }
+  .centered-form {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15%;
+    width: 70%; 
+}
+  
+  
+  
+ .button {
+            background-color: #CEF6E3;
+            color: #0A2A0A;
+            cursor: pointer;
+            font-size: 20px;
+  }
+
+
+img {
+	max-width: 100%;
+	height: auto;
+	margin-top: 30px;
+}
+
+#logo {
+	position: absolute;
+	top: 10px;
+	right: 50px;
+	width: 100px;
+	height: auto;
+}
+  
+</style>
+</h:head> 
+
+
+<body>
+
+
+<img id= "logo" src="https://cdn-icons-png.flaticon.com/512/2060/2060284.png"/>
+
+	<h:form styleClass="centered-form">
+		<h:dataTable border="2" value="#{adminBean.itinerario}" var="prod">
+			<f:facet  name="header">Nuevo</f:facet>
+
+			<h:column>
+				<f:facet  name="header">Destino</f:facet>
+				<h:inputText value="#{prod.destino}" id="destino"
+					required="true"  />
+				<h:message for="destino" style="color:red;" />	
+
+
+			</h:column>
+			
+			<h:column>
+				<f:facet  name="header">Tipo de Grupo</f:facet>
+				<h:inputText value="#{prod.tipogrupo}" id="tipogrupo"
+					required="true" validatorMessage="Este campo es obligatorio" />
+				<h:message for="tipogrupo" style="color:red;" />	
+			</h:column>
+			
+			<h:column>
+				<f:facet  name="header">Descripción</f:facet>
+				<h:inputText value="#{prod.descripcion}" id="descripcion"
+					required="true" validatorMessage="Este campo es obligatorio" />
+				<h:message for="descripcion" style="color:red;" />	
+			</h:column>
+
+			<h:column>
+				<f:facet  name="header">Precio</f:facet>
+				<h:inputText id="precio" value="#{prod.precio}" required="true"
+					style="width: 300px;" />
+				<h:message for="precio" style="color:red;" />
+			</h:column>
+			
+			<h:column>
+				<f:facet  name="header">Enlace</f:facet>
+				<h:inputText value="#{prod.enlace}" id="enlace"
+					required="true" />
+				<h:message for="enlace" style="color:red;" />	
+			</h:column>
+			
+
+			<h:column>
+				<f:facet  name="header">Acción</f:facet>
+				<h:commandButton action="#{adminBean.publicarItinerario()}" value="Añadir" styleClass="button"/>
+			</h:column>
+
+		</h:dataTable>
+
+	</h:form>
+</body>  	
+</html>

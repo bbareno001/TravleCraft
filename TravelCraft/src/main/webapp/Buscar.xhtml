@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+
+<h:head>
+	<title>Menu principal</title>
+
+
+	<style>
+body {
+	 font-family: Times New Roman, sans-serif;
+	text-color: #0B3861;
+	text-align: center;
+	background-image:
+		url('https://p1.pxfuel.com/preview/619/758/367/sky-clouds-blue-white-background-air.jpg');
+	background-color: #E0F2F7;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	}
+
+img {
+	max-width: 100%;
+	height: auto;
+	margin-top: 30px;
+}
+
+.button {
+	background-color: #CEF6E3;
+            color: #0A2A0A;
+            cursor: pointer;
+            font-size: 20px;
+             width: 98%; 
+  }
+.centered-form {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    width: 70%; 
+}
+
+.form {
+    width: 98%; 
+}
+
+#logo {
+	position: absolute;
+	top: 10px;
+	right: 50px;
+	width: 100px;
+	height: auto;
+}
+
+
+</style>
+</h:head>
+
+
+<body>
+
+	<img id= "logo" src="https://cdn-icons-png.flaticon.com/512/2060/2060284.png"/>
+	
+	<h1 style="font-size: 45px; color: #0A2A0A;">¿Cuál es su proximo destino?</h1>
+	<h2 style="font-size: 30px; color: #0A2A0A;">Seleccione su próximo destino</h2>
+
+	<h:form>
+		<h:dataTable border="2" value="#{adminBean}" var="prod" styleClass="centered-form">
+			<h:column>
+				<f:facet name="header">Destino</f:facet>
+				<h:inputText value="#{prod.destino}" id="destino" required="true"  styleClass="form"/>
+				<h:message for="destino" style="color:red;" />
+			</h:column>
+
+			<h:column>
+				<h:commandButton action="#{adminBean.buscarItinerario()}"
+					value="Buscar" styleClass="button"/>
+			</h:column>
+		</h:dataTable>
+
+		<h:dataTable value="#{adminBean.listaItSelec}" var="s" border="1" styleClass="centered-form">
+				
+				<f:facet name="header">Itinerarios</f:facet>
+				
+				<h:column>
+				<f:facet name="header">Destino</f:facet>
+						"#{s.destino}"
+				</h:column>
+				
+				<h:column>
+				<f:facet name="header">Tipo de Grupo</f:facet>
+						"#{s.tipogrupo}"
+				</h:column>
+				
+				<h:column>
+				<f:facet name="header">Precio</f:facet>
+						"#{s.precio}"
+				</h:column>
+				
+				<h:column>
+				<f:facet name="header">Descripcion</f:facet>
+						"#{s.descripcion}"
+				</h:column>
+				
+				<h:column>
+				
+				<f:facet name="header">Enlace</f:facet>
+						<h:outputLink value="#{s.enlace}">Enlace al itinerario</h:outputLink>
+				</h:column>
+				
+				<h:column>
+				<f:facet  name="header">Guardar</f:facet>
+				<h:commandButton action="#{adminBean.guardarItinerario(s.iditinerario)}" value="Guardar" styleClass="button"/>
+			   </h:column>
+				
+			</h:dataTable>
+			
+	</h:form>
+
+	<br />
+	
+	<h:form>
+	
+		<h:dataTable value="#{adminBean.listaIt}" var="s" border="2" styleClass="centered-form">
+
+			<f:facet name="header"> <h:outputText value="Listado de Itinerarios" id="facet" /> </f:facet>
+
+			<h:column>
+				<f:facet name="header">Destino</f:facet>
+				#{s.destino}
+			</h:column>
+
+			<h:column>
+				<f:facet  name="header" >Tipo de Grupo</f:facet>
+				#{s.tipogrupo}
+			</h:column>
+			
+			<h:column>
+				<f:facet  name="header">Precio</f:facet>
+				#{s.precio}
+			</h:column>
+			
+			<h:column>
+				<f:facet  name="header">Descripción</f:facet>
+				#{s.descripcion}
+			</h:column>
+
+			<h:column>
+				
+				<f:facet name="header">Enlace</f:facet>
+						<h:outputLink value="#{s.enlace}">Enlace al itinerario</h:outputLink>
+			</h:column>
+				<h:column>
+				<f:facet  name="header">Guardar</f:facet>
+				<h:commandButton action="#{adminBean.guardarItinerario(s.iditinerario)}" value="Guardar" styleClass="button"/>
+			   </h:column>
+				
+		</h:dataTable>
+	</h:form>
+	
+</body>
+</html>

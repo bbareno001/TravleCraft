@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+
+
+<h:head>
+	<title>Guardados</title>
+
+
+	<style>
+body {
+	font-family: Times New Roman, sans-serif;
+	text-color: #0B3861;
+	text-align: center;
+	background-image:
+		url('https://p1.pxfuel.com/preview/619/758/367/sky-clouds-blue-white-background-air.jpg');
+	background-color: #E0F2F7;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	margin-top: 30px;
+}
+
+.button {
+	background-color: #CEF6E3;
+	color: #0A2A0A;
+	cursor: pointer;
+	font-size: 20px;
+	width: 98%;
+}
+
+.centered-form {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15%;
+	width: 70%;
+}
+
+.form {
+	width: 98%;
+}
+
+#logo {
+	position: absolute;
+	top: 10px;
+	right: 50px;
+	width: 100px;
+	height: auto;
+}
+</style>
+</h:head>
+
+
+<body>
+
+	<img id="logo"
+		src="https://cdn-icons-png.flaticon.com/512/2060/2060284.png" />
+<h:panelGroup rendered="#{not adminBean.c}">
+	<h:form>
+
+		<h:dataTable value="#{adminBean.guar}" var="s" border="2" styleClass="centered-form">
+
+			<f:facet name="header">Listado de tus Itinerarios</f:facet>
+
+			<h:column>
+				<f:facet name="header">Destino</f:facet>
+				#{s.itinerario.destino}
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Tipo de Grupo</f:facet>
+				#{s.itinerario.tipogrupo}
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Descripción</f:facet>
+				#{s.itinerario.descripcion}
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Precio</f:facet>
+				#{s.itinerario.precio}
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Enlace</f:facet>
+				<h:outputLink value="#{s.itinerario.enlace}">Enlace al itinerario</h:outputLink>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Eliminar</f:facet>
+				<h:commandButton action="#{adminBean.eliminaItinerario(s.idguardados)}" value="Eliminar" styleClass="form" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Valorar</f:facet>
+				<h:commandButton action="#{adminBean.valorar(s.itinerario.iditinerario)}" value="Valorar" styleClass="form" />
+			</h:column>
+
+		</h:dataTable>
+		
+	</h:form>
+</h:panelGroup>	
+<h:panelGroup rendered="#{adminBean.c}">
+<h:form>
+	<h2>VALORAR EL ITINERARIO</h2>
+		<h:dataTable value="#{adminBean}" var="s" border="2" styleClass="centered-form">
+			
+			
+			<h:column>
+				
+				<f:facet name="header">Nota sobre 5</f:facet>
+				<h:inputText value="#{s.nota}"  styleClass="form"/>
+            
+          
+			</h:column>
+			<h:column>
+				
+				<f:facet name="header">Comentario</f:facet>
+				 <h:inputText value="#{s.comentario}" styleClass="form"/>
+			</h:column>
+			
+			<h:column>
+				<f:facet  name="header">Acción</f:facet>
+				<h:commandButton action="#{adminBean.addValoracion()}"
+					value="Valorar" styleClass="form" />
+			</h:column>
+			
+		</h:dataTable>
+
+	
+		<h:dataTable value="#{adminBean.listaVal}" var="s" border="2" styleClass="centered-form">
+
+			<f:facet name="header"> <h:outputText value="Valoraciones" id="facet" /> </f:facet>
+
+			<h:column>
+				<f:facet name="header">Destino</f:facet>
+				#{s.itinerario.destino}
+			</h:column>
+
+			<h:column>
+				<f:facet  name="header" >Nota</f:facet>
+				#{s.nota}
+			</h:column>
+			
+	
+			<h:column>
+				<f:facet  name="header">Comentario</f:facet>
+				#{s.comentario}
+			</h:column>
+
+				
+		</h:dataTable>
+	
+
+	</h:form>
+	
+	</h:panelGroup>	
+</body>
+
+
+</html>

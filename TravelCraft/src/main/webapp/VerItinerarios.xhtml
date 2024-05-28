@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<h:form>
+	
+		<h:dataTable value="#{adminBean.listaIt}" var="s" border="2">
+
+			<f:facet name="header"> <h:outputText value="Listado de Itinerarios" id="facet" /> </f:facet>
+
+			<h:column>
+				<f:facet name="header">Destinos</f:facet>
+				#{s.destino}
+			</h:column>
+
+			<h:column>
+				<f:facet  name="header" >Tipo de Grupo</f:facet>
+				#{s.tipogrupo}
+			</h:column>
+			
+			<h:column>
+				<f:facet  name="header">Precio</f:facet>
+				#{s.precio}
+			</h:column>
+			
+			<h:column>
+				<f:facet  name="header">Descripción</f:facet>
+				#{s.descripcion}
+			</h:column>
+
+			<h:column>
+				
+				<f:facet name="header">Enlace</f:facet>
+						<h:outputLink value="#{s.enlace}">Enlace al itinerario</h:outputLink>
+			</h:column>
+				
+		</h:dataTable>
+	</h:form>
+</html>
